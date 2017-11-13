@@ -1,0 +1,228 @@
+<!-- Header -->
+<%# binding.pry %>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/card.png" alt="" style="width: 450px">
+                    <%= image_tag '/card.png', :class => 'img-responsive', :style => 'width: 450px' %>
+                    <div class="intro-text">
+                        <span class="name">Documento do Estudante</span>
+                        <hr class="star-light">
+                        <span class="skills">Garanta seu direito a meia entrada em atividades culturais, esportivas e educacionais.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Valid Grid Section -->
+    <section id="valida">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Validar carteirinha</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+<%#= form_tag(welcome_index_path, :method => "get", :name => 'sentMessage', :id => 'contactForm') do %>
+  <%#= text_field_tag :matricula, params[:matricula]%>
+  <%#= submit_tag 'Search', name: nil %>
+<%# end %>
+            <% if params[:matricula] %>
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4">Matrícula:</div>
+                <div class="col-sm-6" style="font-weight: bold"><%= params[:matricula] %></div>
+            </div>   
+            <% if !@estudante %>
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-5">Não encontrada.</div>
+            </div> 
+            <% else %>
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4">Nome:</div>
+                <div class="col-sm-6" style="font-weight: bold"><%= @estudante.nome %></div>
+            </div>  
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4">RG:</div>
+                <div class="col-sm-6" style="font-weight: bold"><%= @estudante.rg %></div>
+            </div>  
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4">CPF:</div>
+                <div class="col-sm-6" style="font-weight: bold"><%= @estudante.cpf %></div>
+            </div>  
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4">Data de Nascimento:</div>
+                <div class="col-sm-6" style="font-weight: bold"><%= @estudante.nascimento.strftime("%m/%d/%Y") %></div>
+            </div>  
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4">Instituição:</div>
+                <div class="col-sm-6" style="font-weight: bold"><%= @estudante.instituicao %></div>
+            </div>  
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4">Curso:</div>
+                <div class="col-sm-6" style="font-weight: bold"><%= @estudante.curso %></div>
+            </div> 
+            <% end %>
+            <hr class="star-primary">
+            <% end %>
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <!--<form name="sentMessage" id="contactForm" novalidate> -->
+                    <%= form_tag(welcome_index_path+'#valida', :method => "get") do %>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Número de Matrícula</label>
+                                <!--<input type="text" class="form-control" placeholder="Número de Matrícula" id="matricula" required data-validation-required-message="Disgite o número de matricula.">-->
+                                <%= text_field_tag :matricula, params[:matricula], class: 'form-control', placeholder: "Número de Matrícula", id: "matricula" %>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <!--<button type="submit" class="btn btn-success btn-lg col-xs-12">Pesquisar</button>-->
+                                <%= submit_tag 'Pesquisar', name: nil, class: "btn btn-success btn-lg col-xs-12" %>
+                            </div>
+                        </div>
+                    <% end %>
+                    <!--</form>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Dúvidas</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <p>O reconhecimento da meia-entrada para atividades culturais, esportivas e educacionais como um direito de todos os estudantes brasileiros é uma bandeira histórica dos estudantes.</p>
+
+<p>Essa conquista, assegurada pelo Documento de Estudante, também conhecido como carteira ou carteirinha de estudante, demonstra o poder de mobilização do movimento estudantil nacional na luta por mudanças.</p>
+<br>
+<h3>O que é o Documento do Estudante?</h3>
+<p>O Documento do Estudante é o documento que irá validar a identificação estudantil do aluno e assim o mesmo terá os benefícios da Lei da Meia Entrada (Lei 12.933/2013). A única maneira de alguém comprovar que é de fato um estudante passa a ser o Novo Documento do Estudante, padronizado nacionalmente pelas entidades UNE, UBES e ANPG.</p>
+<br>
+<h3>Como surgiu o Documento do Estudante?</h3>
+<p>
+O Documento do Estudante baseia-se na Lei da Meia Entrada, que define desconto de 50% em eventos culturais, educativos, esportivos, de entretenimento e de lazer a estudantes portadores de identificação estudantil válida, em cota restrita a 40% dos ingressos disponíveis.</p>
+<br>
+<h3>Quando entrou em vigor a apresentação do Documento do Estudante?</h3>
+<p>
+A solicitação do Documento do Estudante e sua obrigatoriedade de utilização entrou em vigor a partir de 01/04/2014.
+</p>
+<p>Os beneficiários desse programa são os estudantes regularmente matriculados nos níveis e modalidades de educação e ensino previstos no Título V da Lei no 9.394, de 20 de dezembro de 1996:</p>
+<p>- Ensino infantil</p>
+<p>- Ensino fundamental</p>
+<p>- Ensino médio e técnico</p>
+<p>- Nível superior</p>
+<p>- Pós-graduação (Lato sensu e Stricto sensu)
+</p>
+<br>
+<p>O Documento do Estudante é um documento estudantil que garante o direito da utilização dos benefícios descritos na Lei da Meia Entrada, ou seja, é válido para obtenção de desconto de 50% em ingressos para cinemas, teatros, espetáculos musicais, eventos educativos, entre outros. Para desconto em transporte procure a empresa/órgão de sua cidade.
+</p>
+<p>Para solicitar seu documento entre no portal www.documentodoestudante.com.br e preencha o cadastro com dados pessoais e da instituição de ensino. Após a validação dos dados, seu documento será encaminhado para o endereço cadastrado.
+</p>
+<br>
+<h3>São necessários os seguintes documentos para solicitação do Documento do Estudante:</h3>
+<p>- Dados pessoais (nome, RG, CPF, data de nascimento, instituição que estuda, etc);</p>
+<p>- 01 (uma) foto 3×4 recente digitalizada;</p>
+<p>- 01 (um) comprovante de matrícula.</p>
+<br>
+<h3>O que faço se houver recusa ao cumprimento da lei?</h3>
+<p>
+O aluno poderá adquirir o ingresso com valor integral e requerer posteriormente a devolução da quantia paga a mais, por meio de um órgão de defesa do consumidor ou do próprio Poder Judiciário. Para isto, deverá apresentar cópia do ingresso, nota fiscal (sempre que possível) e a identificação estudantil.</p>
+<p>Se houver recusa do fornecimento de nota fiscal, a prática configura crime de sonegação de tributo cuja pena é de cadeia de 2 a 5 anos – Lei 8.137/90 art. 1o, inciso V. O estudante deverá acionar a Polícia Militar através do telefone 190 para imediata prisão do responsável ou o fornecimento da nota fiscal do serviço.</p>
+<br>
+
+<h3>Precisa de mais ajuda?</h3>
+<p>Envie sua dúvida (clique <a href="#contact" style="color: #fff">aqui</a>) ou nos encaminhe email.</p>
+
+<p>E-mail: sae@documentodoestudante.com.br</p>
+
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="http://www.planalto.gov.br/ccivil_03/_Ato2011-2014/2013/Lei/L12933.htm" class="btn btn-lg btn-outline">
+                        <i class="fa fa-file"></i> Lei completa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <%#<section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Entre em contato</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" placeholder="Nome" id="name" required data-validation-required-message="Digite seu nome.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email </label>
+                                <input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Digite seu endereço de email.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Telefone</label>
+                                <input type="tel" class="form-control" placeholder="Telefone" id="phone" required data-validation-required-message="Digite seu número para contato.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Mensagem</label>
+                                <textarea rows="5" class="form-control" placeholder="Mensagem" id="message" required data-validation-required-message="Digite sua mensagem."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>%>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; MeiaEntradaWeb.info 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

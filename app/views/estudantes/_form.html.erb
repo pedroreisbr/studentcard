@@ -1,0 +1,67 @@
+<%= form_with(model: estudante, local: true) do |form| %>
+  <% if estudante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estudante.errors.count, "error") %> prohibited this estudante from being saved:</h2>
+
+      <ul>
+      <% estudante.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, id: :estudante_nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rg %>
+    <%= form.text_field :rg, id: :estudante_rg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf, id: :estudante_cpf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nascimento %>
+    <%= form.date_select :nascimento, id: :estudante_nascimento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :instituicao %>
+    <%= form.text_field :instituicao, id: :estudante_instituicao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :curso %>
+    <%= form.text_field :curso, id: :estudante_curso %>
+  </div>
+
+  <div class="field">
+    <%= form.label :matricula %>
+    <%= form.text_field :matricula, id: :estudante_matricula %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fone1 %>
+    <%= form.text_field :fone1, id: :estudante_fone1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fone2 %>
+    <%= form.text_field :fone2, id: :estudante_fone2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :estudante_email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
